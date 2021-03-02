@@ -2,6 +2,7 @@ package com.ls.lambda;
 
 import org.springframework.boot.SpringApplication;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class FP01Exercises {
@@ -11,8 +12,8 @@ public class FP01Exercises {
 //        printOddNumbers(numbers);
 
 
-        List<String> courses = List.of("Spring", "Spring boot", "API", "Microservices", "AWS", "PCF", "AZURE", "DOCKER", "Kubernets");
-        printNoOfCharatersInListFunctional(courses);
+        List<String> courses = List.of("Spring", "Spring boot", "API", "Microservices", "AWS", "PCF","PCF", "AZURE", "DOCKER", "Kubernets");
+//        printNoOfCharatersInListFunctional(courses);
      //   printcubesOfOddNumberInListFunctional(numbers);
 
         //ptint courses whic contains spring
@@ -24,6 +25,24 @@ public class FP01Exercises {
 //        courses.stream()
 //                .filter(course -> course.length() > 3)
 //                .forEach(System.out::println);
+
+        //Distinct and sorted
+//        courses.stream()
+//                .distinct()
+//                .sorted()
+//                .forEach(System.out::println);
+    //comparator
+//        courses.stream()
+//                .sorted(Comparator.naturalOrder())
+//                .forEach(System.out::println);
+        //reversed order
+//        courses.stream()
+//                .sorted(Comparator.reverseOrder())
+//                .forEach(System.out::println);
+        //custom compare
+        courses.stream()
+                .sorted(Comparator.comparing(str -> str.length()))
+                .forEach(System.out::println);
     }
 
     private static void printcubesOfOddNumberInListFunctional(List<Integer> numbers) {

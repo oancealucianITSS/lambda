@@ -5,9 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.List;
 import java.util.Random;
-import java.util.function.BiPredicate;
-import java.util.function.Supplier;
-import java.util.function.UnaryOperator;
+import java.util.function.*;
 
 @SpringBootApplication
 public class FP03FunctionalInterfaces {
@@ -33,14 +31,37 @@ public class FP03FunctionalInterfaces {
 
         };
 
-        UnaryOperator<Integer> unaryOperator = (x) -> 3*x;
+        UnaryOperator<Integer> unaryOperator = (x) -> 3 * x;
 
-       // System.out.println(randomIntegerSupplier.get());
+        // System.out.println(randomIntegerSupplier.get());
         System.out.println(unaryOperator.apply(10));
 
-//        BiPredicate
+        BiPredicate<Integer, String> biPredicate = (number, string) -> {
+            return number < 10 && string.length() > 5;
+        };
+
+        System.out.println(biPredicate.test(15, "in28minutes"));
+
+
 //        BiFunction
-//        BuConsumer
+        BiFunction<Integer, String, String> biFunction = (number, string) -> {
+            return number + string;
+        };
+        System.out.println(biFunction.apply(1, "lucian"));
+
+
+//        BiConsumer
+        BiConsumer<Integer, String> biConsumer = (i1, s2) -> {
+            System.out.println(i1);
+            System.out.println(s2);
+        };
+        biConsumer.accept(15, "adiretp");
+
+        BinaryOperator<Integer> sumBinaryOp2 = (x, y) -> x + y;
+
+        BinaryOperator<Integer> sumBinaryOp3 = ( x,  y) -> x + y;
+
+        IntBinaryOperator intBinaryOperator = (x, y) -> x + y;//acum primeste int
 
 //        numbers.stream()
 //                .filter(integerPredicate)
@@ -65,5 +86,26 @@ public class FP03FunctionalInterfaces {
 //
 //
 //    }
+
+
+        Consumer<String> consumer = (x) -> {
+        };
+
+        Consumer<String> consumer2 = (x) -> System.out.println(x);
+
+        Consumer<String> consumer3 = (x) -> {
+            System.out.println(x);
+            System.out.println(x);
+        };
+
+        BiConsumer<String, String> biCons = (str1, str2) -> System.out.println(str1);
+
+        Supplier<String> supplier = () -> {
+            return "Ranga";
+        };
+
+        Predicate<Integer> predicate = (Integer x) -> x % 2 == 0;
+
+
     }
 }

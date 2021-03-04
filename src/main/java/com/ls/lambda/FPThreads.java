@@ -25,7 +25,7 @@ public class FPThreads {
         Runnable runnable = () -> IntStream.range(0,10000)
                 .forEach( i -> System.out.println(Thread.currentThread()+" : " +i));
 
-           
+
         Thread thread = new Thread(runnable);
         thread.start();
 
